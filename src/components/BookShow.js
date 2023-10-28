@@ -1,9 +1,10 @@
 
 
-function BookShow(){
+function BookShow({ book }){
+    console.log("Book.title from BookShow", book.title);
     return(
-        <div>
-            BookShow
+        <div className="book-show">
+            {book.title}
         </div>
     )
 }
