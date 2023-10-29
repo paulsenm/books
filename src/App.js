@@ -25,20 +25,26 @@ function App(){
         console.log(books);
     };
 
-    const handleEditBook = () => {
-
-    }
+    const handleEditBook = (id, newTitle) => {
+        const updatedBooksArray = books.map((book) => {
+           if(book.id === id){
+            return {...book, title: newTitle};
+           }
+           return book;
+        });
+        setBooks(updatedBooksArray);
+    };
 
     const handleDeleteBook = () => {
 
-    }
+    };
 
     return (
         <div className='app'>
-            <BookList books={books} onDelete={deleteBookById} />
+            <BookList books={books} onDelete={deleteBookById} onEdit={handleEditBook} />
             <BookCreate onBookCreate={handleCreateBook} />
         </div>
-    )
+    );
 }
 
 export default App;
