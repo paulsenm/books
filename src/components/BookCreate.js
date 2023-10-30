@@ -25,7 +25,6 @@ function BookCreate({onBookCreate}){
         catch(error){
             console.log(error);
         }
-        //onBookCreate(title, imageSrc);
         setTitle("");
 
 
