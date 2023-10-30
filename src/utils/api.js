@@ -21,7 +21,7 @@ const getImage = async (searchTitle) => {
         }
     );
     console.log("Photos response: ", response);
-    const theURL = defaultImage;
+    let theURL = defaultImage;
     if(response.data.photos.length >= 1){
         theURL = response.data.photos[0].src.tiny;
     }
