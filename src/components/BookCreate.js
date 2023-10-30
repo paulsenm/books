@@ -1,19 +1,35 @@
 import {useState} from 'react';
 
+import getImage from '../utils/api';
+
 function BookCreate({onBookCreate}){
     const [title, setTitle] = useState("");
+    const [imageSrc, setImageSrc] = useState("");
+
+
 
     const handleChange = (event) => {
         setTitle(event.target.value);
         console.log("title set to: ", title, ". Event target value: ", event.target.value);
-    }
+    };
 
-    const handleSubmit = (event) => {
+    const handleSubmit =  async (event) => {
         event.preventDefault();
         console.log("Creating book with title: ", title);
-        onBookCreate(title);
+        try{
+            const imageURL = await getImage(title)
+            setImageSrc(imageURL);
+            onBookCreate(title, imageURL);
+            
+        }
+        catch(error){
+            console.log(error);
+        }
+        //onBookCreate(title, imageSrc);
         setTitle("");
-    }
+
+
+    };
 
 
     return(
@@ -25,7 +41,7 @@ function BookCreate({onBookCreate}){
                 <button className='button'>Create</button>
             </form>
         </div>
-    )
+    );
 }
 
 export default BookCreate;

@@ -18,7 +18,13 @@ function BookShow({ book, onDelete, onEdit }) {
         setShowEdit(false);
     }
 
-    let content = <h3>{book.title}</h3>;
+    let content = 
+        <>
+        <h3>{book.title}</h3>
+        <img src={book.imageSrc} />
+        </>
+    
+        ;
 
     if (showEdit){
         content = <BookEdit book={book} onEdit={onTitleChange}/>;

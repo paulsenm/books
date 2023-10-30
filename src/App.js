@@ -13,12 +13,13 @@ function App(){
         });
         setBooks(updatedBooksArray);
     }
-    const handleCreateBook = (title) => {
+    const handleCreateBook = (title, imageSrc) => {
         console.log("Title was: ", title);
         const bookId = Math.floor(Math.random() * 1000);
         const book = {
             id: bookId,
-            title: title
+            title: title,
+            imageSrc: imageSrc
         }
         const updatedBooksArray = [...books, book];
         setBooks(updatedBooksArray);
