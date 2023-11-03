@@ -19,7 +19,12 @@ function App(){
         fetchAllBooks();
     }, []);
 
-    const deleteBookById = (id) => {
+    const deleteBookById = async (id) => {
+        const url = 'http://localhost:3001/books/' + id;
+        const deleteBookContainer = await axios.delete(url);
+
+
+
         const updatedBooksArray = books.filter((book) => {
             return book.id !== id;
         });

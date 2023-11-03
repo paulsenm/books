@@ -1,10 +1,6 @@
 {
   "books": [
     {
-      "title": "mouse",
-      "id": 4
-    },
-    {
       "title": "pineapple",
       "imageSrc": "https://images.pexels.com/photos/147359/pexels-photo-147359.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280",
       "id": 5
@@ -18,6 +14,11 @@
       "title": "goat",
       "imageSrc": "https://images.pexels.com/photos/11512739/pexels-photo-11512739.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280",
       "id": 7
+    },
+    {
+      "title": "mouse",
+      "imageSrc": "https://images.pexels.com/photos/345736/pexels-photo-345736.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280",
+      "id": 8
     }
   ]
 }
