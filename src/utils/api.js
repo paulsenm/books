@@ -27,5 +27,8 @@ const getImage = async (searchTitle) => {
     }
     return theURL;
 }
+const createBook = async (book) => {
+    console.log("create book api called");
+}
 
 export default getImage;

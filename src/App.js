@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import BookCreate from './components/BookCreate';
 import BookList from './components/BookList';
+import axios from 'axios';
 
 
 function App(){
@@ -13,17 +14,25 @@ function App(){
         });
         setBooks(updatedBooksArray);
     }
-    const handleCreateBook = (title, imageSrc) => {
-        console.log("Title was: ", title);
-        const bookId = Math.floor(Math.random() * 1000);
-        const book = {
-            id: bookId,
+    const handleCreateBook = async (title, imageSrc) => {
+        const response = await axios.post('http://localhost:3001/books', {
             title: title,
             imageSrc: imageSrc
-        }
-        const updatedBooksArray = [...books, book];
-        setBooks(updatedBooksArray);
-        console.log(books);
+        });
+        const book = response.data;
+
+        console.log(response)
+        setBooks([...books, book]);
+        // console.log("Title was: ", title);
+        // const bookId = Math.floor(Math.random() * 1000);
+        // const book = {
+        //     id: bookId,
+        //     title: title,
+        //     imageSrc: imageSrc
+        // }
+        // const updatedBooksArray = [...books, book];
+        // setBooks(updatedBooksArray);
+        // console.log(books);
     };
 
     const handleEditBook = (id, newTitle) => {
