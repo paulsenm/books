@@ -1,16 +1,7 @@
 {
   "books": [
     {
-      "title": "Changed Title",
-      "id": 2
-    },
-    {
-      "title": "an even another one",
-      "id": 3
-    },
-    {
-      "title": "mickey mouse",
-      "imageSrc": "https://images.pexels.com/photos/3143813/pexels-photo-3143813.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280",
+      "title": "mouse",
       "id": 4
     },
     {
