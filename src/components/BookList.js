@@ -12,8 +12,6 @@ function BookList({ books, onDelete, onEdit }){
     return(
         <div className="book-list">
             <div>
-                <h3>Count is: {count}</h3>
-                <button onClick={incrementCount}>Increment</button>
             </div>
             {renderedBooks}
         </div>
