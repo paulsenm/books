@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import axios from 'axios';
 
 
@@ -6,9 +6,9 @@ const BooksContext = createContext();
 
 function Provider( {children} ){
     const [books, setBooks] = useState([]);
-
+    const baseURL = 'http://localhost:3001/books/';
     const fetchAllBooks = async () => {
-        const booksContainer = await axios.get('http://localhost:3001/books');
+        const booksContainer = await axios.get(baseURL);
         const booksStart = booksContainer.data;
         setBooks(booksStart);
     }
@@ -16,7 +16,7 @@ function Provider( {children} ){
 
 
     const deleteBookById = async (id) => {
-        const url = 'http://localhost:3001/books/' + id;
+        const url = baseURL + id;
         const deleteBookContainer = await axios.delete(url);
         const updatedBooksArray = books.filter((book) => {
             return book.id !== id;
@@ -25,7 +25,7 @@ function Provider( {children} ){
     }
 
     const handleCreateBook = async (title, imageSrc) => {
-        const newBookContainer = await axios.post('http://localhost:3001/books', {
+        const newBookContainer = await axios.post(baseURL, {
             title: title,
             imageSrc: imageSrc
         });
@@ -34,10 +34,12 @@ function Provider( {children} ){
     };
 
     const handleEditBook = async (id, newTitle) => {
-        const url = 'http://localhost:3001/books/' + id;
-
+        const url = baseURL + id;
+        const originalBookContainer = await axios.get(url);
+        const originalBook = originalBookContainer.data; //These lines were needed to keep the imageSrc in tact
         const editedBookContainer = await axios.put(url, {
-            title: newTitle
+            title: newTitle,
+            imageSrc: originalBook.imageSrc
         });
         
         const editedBook = editedBookContainer.data;
@@ -60,7 +62,7 @@ const valueToShare = {
 };
 
     return (
-        <BooksContext.Provider value={{}}>
+        <BooksContext.Provider value={valueToShare}>
             {children}
         </BooksContext.Provider>
     ); 

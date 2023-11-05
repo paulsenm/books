@@ -22,7 +22,7 @@ function BookShow({book}) {
     let content = 
         <>
         <h3>{book.title}</h3>
-        <img src={book.imageSrc} />
+        <img src={book.imageSrc} alt={`Picture of ${book.title}`} />
         </>
     
         ;

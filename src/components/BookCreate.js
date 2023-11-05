@@ -21,8 +21,8 @@ function BookCreate(){
         try{
             const imageURL = await getImage(title)
             setImageSrc(imageURL);
-            handleCreateBook(title, imageSrc);
-            
+            console.log(imageSrc);
+            handleCreateBook(title, imageURL);
         }
         catch(error){
             console.log(error);
