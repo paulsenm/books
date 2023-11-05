@@ -1,8 +1,10 @@
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 
 import getImage from '../utils/api';
+import BooksContext from '../context/books';
 
-function BookCreate({onBookCreate}){
+function BookCreate(){
+    const { handleCreateBook } = useContext(BooksContext);
     const [title, setTitle] = useState("");
     const [imageSrc, setImageSrc] = useState("");
 
@@ -19,7 +21,7 @@ function BookCreate({onBookCreate}){
         try{
             const imageURL = await getImage(title)
             setImageSrc(imageURL);
-            onBookCreate(title, imageURL);
+            handleCreateBook(title, imageSrc);
             
         }
         catch(error){
